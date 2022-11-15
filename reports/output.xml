@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20221115 19:24:55.643" rpa="false" schemaversion="3">
+<suite id="s1" name="Auth Tests" source="D:\Pessoal\Compass\Estudos\Projeto-Viagem\tests\auth_tests.robot">
+<kw name="Criar Sessao" library="base" type="SETUP">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>gerenciador-viagens</arg>
+<arg>${BASE_URI}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20221115 19:24:55.824" level="INFO">Creating Session using : alias=gerenciador-viagens, url=http://localhost:8089/api/v1/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20221115 19:24:55.824" endtime="20221115 19:24:55.825"/>
+</kw>
+<status status="PASS" starttime="20221115 19:24:55.823" endtime="20221115 19:24:55.825"/>
+</kw>
+<test id="s1-t1" name="Cenario 01: POST Autenticação Estática Valida 200" line="8">
+<kw name="Selecionar Auth Estatica &quot;auth_valida&quot;" library="auth_keywords" sourcename="Selecionar Auth Estatica &quot;${auth}&quot;">
+<kw name="Importar JSON Estatico" library="common">
+<var>${json}</var>
+<arg>json_auth.json</arg>
+<kw name="Get File" library="OperatingSystem">
+<var>${arquivo}</var>
+<arg>${EXECDIR}/support/fixtures/static/${nome_arquivo}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20221115 19:24:55.826" level="INFO" html="true">Getting file '&lt;a href="file://D:\Pessoal\Compass\Estudos\Projeto-Viagem\support\fixtures\static\json_auth.json"&gt;D:\Pessoal\Compass\Estudos\Projeto-Viagem\support\fixtures\static\json_auth.json&lt;/a&gt;'.</msg>
+<msg timestamp="20221115 19:24:55.827" level="INFO">${arquivo} = {   
+    "auth_valida": {
+        "email":"admin@email.com",
+        "senha":"654321"
+    },
+    "email_nao_cadastrado": {
+        "email": "emailinexistente@gmail.com",
+        "senha":"654321"
+    }...</msg>
+<status status="PASS" starttime="20221115 19:24:55.826" endtime="20221115 19:24:55.827"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${data}</var>
+<arg>json.loads('''${arquivo}''')</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20221115 19:24:55.828" level="INFO">${data} = {'auth_valida': {'email': 'admin@email.com', 'senha': '654321'}, 'email_nao_cadastrado': {'email': 'emailinexistente@gmail.com', 'senha': '654321'}, 'email_invalido': {'email': 'adminemail.com', 'senh...</msg>
+<status status="PASS" starttime="20221115 19:24:55.827" endtime="20221115 19:24:55.828"/>
+</kw>
+<msg timestamp="20221115 19:24:55.829" level="INFO">${json} = {'auth_valida': {'email': 'admin@email.com', 'senha': '654321'}, 'email_nao_cadastrado': {'email': 'emailinexistente@gmail.com', 'senha': '654321'}, 'email_invalido': {'email': 'adminemail.com', 'senh...</msg>
+<status status="PASS" starttime="20221115 19:24:55.826" endtime="20221115 19:24:55.829"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${payload}</var>
+<arg>${json["${auth}"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221115 19:24:55.830" level="INFO">${payload} = {'email': 'admin@email.com', 'senha': '654321'}</msg>
+<status status="PASS" starttime="20221115 19:24:55.829" endtime="20221115 19:24:55.830"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${payload}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20221115 19:24:55.830" level="INFO">${payload} = {'email': 'admin@email.com', 'senha': '654321'}</msg>
+<status status="PASS" starttime="20221115 19:24:55.830" endtime="20221115 19:24:55.830"/>
+</kw>
+<status status="PASS" starttime="20221115 19:24:55.826" endtime="20221115 19:24:55.830"/>
+</kw>
+<kw name="POST Endpoint /auth" library="auth_keywords">
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>gerenciador-viagens</arg>
+<arg>/auth</arg>
+<arg>json=&amp;{payload}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20221115 19:24:55.936" level="INFO">POST Request : url=http://localhost:8089/api/v1/auth 
+ path_url=/api/v1/auth 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '47', 'Content-Type': 'application/json'} 
+ body=b'{"email": "admin@email.com", "senha": "654321"}' 
+ </msg>
+<msg timestamp="20221115 19:24:55.936" level="INFO">POST Response : url=http://localhost:8089/api/v1/auth 
+ status=200, reason= 
+ headers={'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'X-Frame-Options': 'DENY', 'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Date': 'Tue, 15 Nov 2022 22:24:55 GMT'} 
+ body={"data":{"token":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9BRE1JTiIsImNyZWF0ZWQiOjE2Njg1NTEwOTU5MzEsImV4cCI6MTY2ODY1MTA5NH0.cSTN5NY38aBsyiidPdUj31xzVNUIDSSf8OMp2M8XRd9JOnKzHP1ZWdZiol-XL8_nWmTxqZj3PFim9CcIlj0L_A"},"errors":[]} 
+ </msg>
+<msg timestamp="20221115 19:24:55.936" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20221115 19:24:55.831" endtime="20221115 19:24:55.936"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${payload}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221115 19:24:55.936" endtime="20221115 19:24:55.936"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response: ${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221115 19:24:55.937" endtime="20221115 19:24:55.938"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20221115 19:24:55.939" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20221115 19:24:55.938" endtime="20221115 19:24:55.939"/>
+</kw>
+<kw name="Validar Content-type" library="common">
+<kw name="Get From Dictionary" library="Collections">
+<var>${response.value}</var>
+<arg>${response.headers}</arg>
+<arg>content-type</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20221115 19:24:55.941" level="INFO">${response.value} = application/json;charset=UTF-8</msg>
+<status status="PASS" starttime="20221115 19:24:55.940" endtime="20221115 19:24:55.941"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${response.value}</arg>
+<arg>application/json;charset=UTF-8</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221115 19:24:55.942" endtime="20221115 19:24:55.943"/>
+</kw>
+<status status="PASS" starttime="20221115 19:24:55.940" endtime="20221115 19:24:55.943"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${response.status_code}&quot; == &quot;200&quot;">
+<kw name="Set Variable" library="BuiltIn">
+<var>${token}</var>
+<arg>${response.json()["data"]["token"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20221115 19:24:55.946" level="INFO">${token} = eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9BRE1JTiIsImNyZWF0ZWQiOjE2Njg1NTEwOTU5MzEsImV4cCI6MTY2ODY1MTA5NH0.cSTN5NY38aBsyiidPdUj31xzVNUIDSSf8OMp2M8XRd9JOnKzHP1ZWdZiol-XL8_...</msg>
+<status status="PASS" starttime="20221115 19:24:55.944" endtime="20221115 19:24:55.946"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${token}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20221115 19:24:55.947" level="INFO">${token} = eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9BRE1JTiIsImNyZWF0ZWQiOjE2Njg1NTEwOTU5MzEsImV4cCI6MTY2ODY1MTA5NH0.cSTN5NY38aBsyiidPdUj31xzVNUIDSSf8OMp2M8XRd9JOnKzHP1ZWdZiol-XL8_...</msg>
+<status status="PASS" starttime="20221115 19:24:55.947" endtime="20221115 19:24:55.947"/>
+</kw>
+<status status="PASS" starttime="20221115 19:24:55.944" endtime="20221115 19:24:55.947"/>
+</branch>
+<status status="PASS" starttime="20221115 19:24:55.943" endtime="20221115 19:24:55.947"/>
+</if>
+<status status="PASS" starttime="20221115 19:24:55.831" endtime="20221115 19:24:55.947"/>
+</kw>
+<kw name="Validar Status Code &quot;200&quot;" library="common" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20221115 19:24:55.948" endtime="20221115 19:24:55.950"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Status Code Retornado: ${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221115 19:24:55.950" endtime="20221115 19:24:55.951"/>
+</kw>
+<status status="PASS" starttime="20221115 19:24:55.947" endtime="20221115 19:24:55.951"/>
+</kw>
+<kw name="Validar Ter Logado" library="auth_keywords">
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${response.json()["data"]["token"]}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20221115 19:24:55.953" level="INFO">Length is 223</msg>
+<status status="PASS" starttime="20221115 19:24:55.952" endtime="20221115 19:24:55.953"/>
+</kw>
+<kw name="Should Be Empty" library="BuiltIn">
+<arg>${response.json()["errors"]}</arg>
+<doc>Verifies that the given item is empty.</doc>
+<msg timestamp="20221115 19:24:55.954" level="INFO">Length is 0</msg>
+<status status="PASS" starttime="20221115 19:24:55.953" endtime="20221115 19:24:55.954"/>
+</kw>
+<status status="PASS" starttime="20221115 19:24:55.952" endtime="20221115 19:24:55.954"/>
+</kw>
+<tag>AUTHVALIDA</tag>
+<status status="PASS" starttime="20221115 19:24:55.825" endtime="20221115 19:24:55.955"/>
+</test>
+<doc>Arquivo de testes do endpoint /auth para gerar um token de acesso</doc>
+<status status="PASS" starttime="20221115 19:24:55.646" endtime="20221115 19:24:55.958"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">AUTHVALIDA</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Auth Tests">Auth Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
