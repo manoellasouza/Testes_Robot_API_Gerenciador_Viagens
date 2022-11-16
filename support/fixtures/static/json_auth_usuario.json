@@ -1,0 +1,30 @@
+{   
+    "auth_valida": {
+        "email":"usuario@email.com",
+        "senha":"123456"
+    },
+    "email_nao_cadastrado": {
+        "email": "emailinexistente@gmail.com",
+        "senha":"123456"
+    },
+    "email_invalido": {
+        "email": "usuarioemail.com",
+        "senha":"123456"
+    },
+    "senha_incorreta": {
+        "email": "usuario@email.com",
+        "senha":"teste123"
+    },
+    "sem_senha": {
+        "email":"usuario@email.com",
+        "senha":""
+    },
+    "sem_email": {
+        "email":"",
+        "senha":"123456"
+    },
+    "senha_numero": {
+        "email":"usuario@email.com",
+        "senha":123456
+    }
+}

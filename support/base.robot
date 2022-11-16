@@ -7,6 +7,7 @@ Library              OperatingSystem
 Resource             ./common/common.robot
 Resource             ./variables/variables.robot
 Resource             ../keywords/auth_keywords.robot
+Resource             ../keywords/viagens_keywords.robot
 
 *** Keywords ***
 Criar Sessao              

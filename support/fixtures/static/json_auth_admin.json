@@ -22,5 +22,9 @@
     "sem_email": {
         "email":"",
         "senha":"654321"
+    },
+    "senha_numero": {
+        "email":"admin@email.com",
+        "senha":654321
     }
 }

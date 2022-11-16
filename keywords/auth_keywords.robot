@@ -15,13 +15,23 @@ POST Endpoint /auth
         Set Global Variable               ${token} 
     END
 
-Selecionar Auth Estatica "${auth}"
-    ${json}                               Importar JSON Estatico                 json_auth.json  
+Selecionar Auth Estatica Admin "${auth}"
+    ${json}                               Importar JSON Estatico                 json_auth_admin.json  
     ${payload}                            Set variable                           ${json["${auth}"]}
     Set Global Variable                   ${payload}
 
-Criar Um Usuario Estatico e Armazenar Token
-    Selecionar Auth Estatica "auth_valida"
+
+Selecionar Auth Estatica User Padrão "${auth}"
+    ${json}                               Importar JSON Estatico                 json_auth_usuario.json  
+    ${payload}                            Set variable                           ${json["${auth}"]}
+    Set Global Variable                   ${payload}
+
+Criar User Admin Estatico e Armazenar Token
+    Selecionar Auth Estatica Admin "auth_valida"
+    POST Endpoint /auth
+
+Criar User Padrão Estatico e Armazenar Token
+    Selecionar Auth Estatica User Padrão "auth_valida"
     POST Endpoint /auth
 
 Validar Ter Logado
