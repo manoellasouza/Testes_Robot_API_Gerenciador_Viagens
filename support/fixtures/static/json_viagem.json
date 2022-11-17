@@ -6,44 +6,24 @@
         "localDeDestino": "Rio de Janeiro",
         "regiao": "Sudeste"
       },
-      "acompanhante_invalida": {
+      "acompanhante_numeros": {
         "acompanhante": 1256,
         "dataPartida": "2023-09-15",
         "dataRetorno": "2023-09-15",
         "localDeDestino": "Rio de Janeiro",
         "regiao": "Sudeste"
       },
-      "dataPartida_invalida": {
-        "acompanhante": "string",
-        "dataPartida": "string",
-        "dataRetorno": "string",
-        "localDeDestino": "string",
-        "regiao": "string"
+      "dataPartida_em_branco": {
+        "acompanhante": "Lilian Martins",
+        "dataPartida": "",
+        "dataRetorno": "2023-09-20",
+        "localDeDestino": "Rio de Janeiro",
+        "regiao": "Sudeste"
       },
-      "dataRetorno_invalida": {
-        "acompanhante": "string",
-        "dataPartida": "string",
-        "dataRetorno": "string",
-        "localDeDestino": "string",
-        "regiao": "string"
-      },
-      "localDeDestino_invalida": {
-        "acompanhante": "string",
-        "dataPartida": "string",
-        "dataRetorno": "string",
-        "localDeDestino": "string",
-        "regiao": "string"
-      },
-      "regiao_invalida": {
-        "acompanhante": "string",
-        "dataPartida": "string",
-        "dataRetorno": "string",
-        "localDeDestino": "string",
-        "regiao": "string"
-      },
-      "viagem_incompleta": {
-        "acompanhante": "string",
-        "dataPartida": "string",
-        "dataRetorno": "string"
+      "sem_dataRetorno": {
+        "acompanhante": "Lilian Martins",
+        "dataPartida": "2023-09-15",
+        "localDeDestino": "Rio de Janeiro",
+        "regiao": "Sudeste"
       }
 }

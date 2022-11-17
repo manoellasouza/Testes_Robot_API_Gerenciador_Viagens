@@ -38,5 +38,10 @@ Validar Ter Logado
     Should Not Be Empty        ${response.json()["data"]["token"]} 
     Should Be Empty            ${response.json()["errors"]}           
 
-Validar Mensagem de Erro "${erro}"
+Validar Mensagem de Erro Status "${erro}"
     Should Be Equal            ${response.json()["error"]}            ${erro}
+
+Validar Mensagem de Erro Tratamento "${erro}"
+    Should Be Equal            ${response.json()["errors"][0]}            ${erro}
+
+

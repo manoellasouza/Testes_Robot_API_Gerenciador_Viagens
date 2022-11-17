@@ -13,16 +13,22 @@ GET Endpoint /viagens
 
 POST Endpoint /viagens
     &{header}                             Create Dictionary                  Authorization=${tokeN}                         
-    ${response}                           POST On Session                    gerenciador-viagens                    /viagens        json=&{payload}        headers=&{header}        expected_status=any 
+    ${response}                           POST On Session                    gerenciador-viagens                    /viagens        json=&{payload}        headers=&{header}        expected_status=any
     Log To Console                        ${payload}
     Log To Console                        Response: ${response.content}
     Set Global Variable                   ${response}
     Validar Content-type
-        IF    "${response.status_code}" == "201"   
+    IF    "${response.status_code}" == "201"   
         ${id_viagem}                     Set Variable                        ${response.json()["data"]["id"]} 
         Set Global Variable               ${id_viagem} 
         Validar Ter Criado a Viagem
     END
+
+DELETE Endpoint /viagens
+    &{header}                             Create Dictionary                   Authorization=${token}  
+    ${response}                           DELETE On Session                   gerenciador-viagens                    /viagens/${id_viagem}        headers=&{header}        expected_status=any
+    Log To Console                        Response: ${response.content}
+    Set Global Variable                   ${response}
 
 Selecionar Viagem Estatica "${viagem}"
     ${json}                               Importar JSON Estatico               json_viagem.json  
