@@ -30,6 +30,10 @@ Criar User Admin Estatico e Armazenar Token
     Selecionar Auth Estatica Admin "auth_valida"
     POST Endpoint /auth
 
+Selecionar Token Invalido
+    ${token}                        Set Variable            123456789 
+    Set Global Variable             ${token}      
+
 Criar User Padrão Estatico e Armazenar Token
     Selecionar Auth Estatica User Padrão "auth_valida"
     POST Endpoint /auth
@@ -37,11 +41,3 @@ Criar User Padrão Estatico e Armazenar Token
 Validar Ter Logado
     Should Not Be Empty        ${response.json()["data"]["token"]} 
     Should Be Empty            ${response.json()["errors"]}           
-
-Validar Mensagem de Erro Status "${erro}"
-    Should Be Equal            ${response.json()["error"]}            ${erro}
-
-Validar Mensagem de Erro Tratamento "${erro}"
-    Should Be Equal            ${response.json()["errors"][0]}            ${erro}
-
-

@@ -1,10 +1,10 @@
 {   
     "viagem_valida": {
-        "acompanhante": "Lilian Martins",
+        "acompanhante": "Isabela Martins",
         "dataPartida": "2023-09-15",
         "dataRetorno": "2023-09-20",
-        "localDeDestino": "Rio de Janeiro",
-        "regiao": "Sudeste"
+        "localDeDestino": "Bahia",
+        "regiao": "Nordeste"
       },
       "acompanhante_numeros": {
         "acompanhante": 1256,

@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20221117 19:36:04.389" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20221119 22:47:59.018" rpa="false" schemaversion="3">
 <suite id="s1" name="Robot Interactive Console" source="c:\Users\manoe\.vscode\extensions\robocorp.robotframework-lsp-1.5.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
 <test id="s1-t1" name="Default Task/Test" line="5">
 <kw name="Interpreter Main Loop" library="MainLoop">
-<kw name="Criar User Admin Estatico e Armazenar Token">
-<msg timestamp="20221117 19:36:05.828" level="FAIL">No keyword with name 'Criar User Admin Estatico e Armazenar Token' found.</msg>
-<status status="FAIL" starttime="20221117 19:36:05.828" endtime="20221117 19:36:05.828"/>
+<kw name="Selecionar Token Invalido">
+<msg timestamp="20221119 22:47:59.974" level="FAIL">No keyword with name 'Selecionar Token Invalido' found.</msg>
+<status status="FAIL" starttime="20221119 22:47:59.974" endtime="20221119 22:47:59.974"/>
 </kw>
 <kw name="Selecionar Viagem Estatica &quot;viagem_valida&quot;">
-<status status="NOT RUN" starttime="20221117 19:36:05.832" endtime="20221117 19:36:05.832"/>
+<status status="NOT RUN" starttime="20221119 22:47:59.975" endtime="20221119 22:47:59.975"/>
 </kw>
 <kw name="POST Endpoint /viagens">
-<status status="NOT RUN" starttime="20221117 19:36:05.836" endtime="20221117 19:36:05.836"/>
+<status status="NOT RUN" starttime="20221119 22:47:59.982" endtime="20221119 22:47:59.982"/>
 </kw>
-<kw name="DELETE Endpoint /viagens">
-<status status="NOT RUN" starttime="20221117 19:36:05.843" endtime="20221117 19:36:05.843"/>
+<kw name="Validar Status Code &quot;401&quot;">
+<status status="NOT RUN" starttime="20221119 22:47:59.987" endtime="20221119 22:47:59.988"/>
 </kw>
-<status status="PASS" starttime="20221117 19:36:04.416" endtime="20221117 19:36:06.585"/>
+<kw name="Validar Mensagem de Erro Status &quot;Unauthorized&quot;">
+<status status="NOT RUN" starttime="20221119 22:47:59.990" endtime="20221119 22:47:59.990"/>
 </kw>
-<status status="PASS" starttime="20221117 19:36:04.415" endtime="20221117 19:36:06.585"/>
+<kw name="Validar Mensagem Response &quot;Acesso negado. Você deve estar autenticado no sistema para acessar a URL solicitada.&quot;">
+<status status="NOT RUN" starttime="20221119 22:47:59.993" endtime="20221119 22:47:59.993"/>
+</kw>
+<status status="PASS" starttime="20221119 22:47:59.049" endtime="20221119 22:48:03.470"/>
+</kw>
+<status status="PASS" starttime="20221119 22:47:59.048" endtime="20221119 22:48:03.471"/>
 </test>
-<status status="PASS" starttime="20221117 19:36:04.391" endtime="20221117 19:36:06.590"/>
+<status status="PASS" starttime="20221119 22:47:59.021" endtime="20221119 22:48:03.472"/>
 </suite>
 <statistics>
 <total>

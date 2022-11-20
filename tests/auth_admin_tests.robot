@@ -12,12 +12,14 @@ Cenario 01: POST Autenticação Estática Valida 200
    Validar Status Code "200"
    Validar Ter Logado
 
+# Sugestão melhoria: Adicionar mensagem de response ao Swagger, pois só consta no código da API
 Cenario 02: POST Autenticação Estática E-mail Não Cadastrado 401
    [Tags]    EMAILNAOCAD 
    Selecionar Auth Estatica Admin "email_nao_cadastrado"
    POST Endpoint /auth
    Validar Status Code "401"
    Validar Mensagem de Erro Status "Unauthorized"
+   Validar Mensagem Response "Acesso negado. Você deve estar autenticado no sistema para acessar a URL solicitada."
 
 Cenario 03: POST Autenticação Estática Senha Incorreta 401
    [Tags]    SENHAINC 
@@ -25,18 +27,17 @@ Cenario 03: POST Autenticação Estática Senha Incorreta 401
    POST Endpoint /auth
    Validar Status Code "401"
    Validar Mensagem de Erro Status "Unauthorized"
+   Validar Mensagem Response "Acesso negado. Você deve estar autenticado no sistema para acessar a URL solicitada."
 
-# Como esperado, o teste abaixo retorna erro 400 (bad request). Porém a documentação da API está incompleta, tendo em vista que
-# este erro não consta como uma possível response.
-Cenario 04: POST Autenticação Estática E-mail Inválido 400
+# Sugestão melhoria: Adicionar o erro 400 (bad request) e a mensagem "Email inválido." ao Swagger
+Cenario 04: POST Autenticação Estática E-mail Formato Inválido 400
    [Tags]    EMAILINVALIDO
    Selecionar Auth Estatica Admin "email_invalido"
    POST Endpoint /auth
    Validar Status Code "400"
    Validar Mensagem de Erro Tratamento "Email inválido."
 
-# Como esperado, o teste abaixo retorna erro 400 (bad request). Porém a documentação da API está incompleta, tendo em vista que
-# este erro não consta como uma possível response.
+# Sugestão melhoria: Adicionar o erro 400 (bad request) e a mensagem "Senha não pode ser vazia." ao Swagger
 Cenario 05: POST Autenticação Estática Sem Senha 400
    [Tags]    SEMSENHA 
    Selecionar Auth Estatica Admin "sem_senha"
@@ -44,8 +45,7 @@ Cenario 05: POST Autenticação Estática Sem Senha 400
    Validar Status Code "400"
    Validar Mensagem de Erro Tratamento "Senha não pode ser vazia."
 
-# Como esperado, o teste abaixo retorna erro 400 (bad request). Porém a documentação da API está incompleta, tendo em vista que
-# este erro não consta como uma possível response.
+# Sugestão melhoria: Adicionar o erro 400 (bad request) e a mensagem "Email não pode ser vazio." ao Swagger
 Cenario 06: POST Autenticação Estática Sem E-mail 400
    [Tags]    SEMEMAIL 
    Selecionar Auth Estatica Admin "sem_email"

@@ -18,3 +18,12 @@ Validar Status Code "${statuscode}"
 Validar Content-type
     ${response.value}=       Get From Dictionary       ${response.headers}        content-type 
     Should Be Equal          ${response.value}       application/json;charset=UTF-8
+
+Validar Mensagem de Erro Status "${erro}"
+    Should Be Equal            ${response.json()["error"]}            ${erro}
+
+Validar Mensagem de Erro Tratamento "${erro}"
+    Should Be Equal            ${response.json()["errors"][0]}            ${erro}
+
+Validar Mensagem Response "${mensagem}"
+    Should Be Equal            ${response.json()["message"]}            ${mensagem}
